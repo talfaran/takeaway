@@ -1,0 +1,13 @@
+<div class="users-container" *ngIf="(usersPosts$ | async); else error">
+  <div class="user" *ngFor="let userPosts of usersPosts$ | async">
+    <div> posts of user id:  {{userPosts.userId}}</div>
+    <div class="user users-post" *ngFor="let post of userPosts.posts; let i = index">
+      {{i}}) {{post.title}}
+    </div>
+  </div>
+</div>
+<ng-template #error>
+    <div class="no-values">Nothing to show . . .</div>
+   </ng-template>
+
+   <app-post windowOpen="isOpen"></app-post>
